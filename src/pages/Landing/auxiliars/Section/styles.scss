@@ -1,0 +1,26 @@
+.LandingSection{
+    width: 100vw;
+    display: flex;
+    height: fit-content;
+    color: white;
+    align-items: center;
+    padding: 2rem 4rem;
+    justify-content: center;
+    &_tittle{
+        font-family: 'Netflix Sans';
+        font-size: 3.125rem;
+        line-height: 1.1;
+        margin-bottom: .5rem;
+        font-weight: 500;
+    }
+    &_text{
+        font-size: 1.625rem;
+        font-weight: 400;
+    }
+    &_image{
+        width: 460px;
+        height: 300px;
+        object-fit: contain;
+        margin-left: 3rem;
+    }
+}
