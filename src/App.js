@@ -1,7 +1,8 @@
-import { LandingPage } from './pages';
+import Router from './routes';
 import './assets/styles/global.css';
+
 function App() {
-  return <LandingPage />
+  return <Router />
 }
 
 export default App;
