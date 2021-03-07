@@ -1,5 +1,6 @@
 .Question{
     width: 75vw;
+    margin-bottom: .7rem;
     .box{
         background-color: #303030;     
         padding: 1em 2.2em 1em 1.2em;  
@@ -12,13 +13,13 @@
         justify-content: space-between;        
         align-items: center;
         cursor: pointer;
-        margin-bottom: 1px;
+       
         &-text{           
             font-weight: 300;
         }
     }
     &_answer{
-
+        margin-top: 1px;
         &-text{
             font-weight: 300;
         }
