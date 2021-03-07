@@ -30,29 +30,7 @@
             font-size: 1.625rem;
             font-weight: 400;
             margin-bottom: 1.5rem;
-        }
-        &_text{            
-            font-size: 1.2rem;
-            font-weight: 400;
-            margin-bottom: 1rem;
-        }
-        .Email_content_input{
-            display: flex;
-            width: fit-content;
-            background-color: red;
-            input{
-                padding: 1rem;
-                outline: none;
-                width: 400px;
-            }
-            .Button{
-                padding: 1rem .8rem;
-                width: fit-content;
-                &_text{
-                    font-size: 1.2rem;
-                }
-            }
-        }
+        }  
     }
    
 }
