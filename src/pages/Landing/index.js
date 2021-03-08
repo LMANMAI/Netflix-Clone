@@ -4,6 +4,7 @@ import Hero from './auxiliars/Hero';
 import Divider from './auxiliars/Divider';
 import LandingSection from './auxiliars/Section';
 import FAQ from './auxiliars/FAQ';
+import { Footer } from '../../components';
 
 function LandingPage() {
     return (
@@ -33,6 +34,7 @@ function LandingPage() {
             <Divider />
             <FAQ/>
             <Divider />
+            <Footer />
         </div>
     )
 }
