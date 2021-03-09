@@ -2,10 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { GiEarthAmerica } from "react-icons/gi";
 
+const Wrapper = styled.div`
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.75);
+`;
 const Container = styled.div`
   max-width: 1000px;
   color: white;
-  background-color: rgba(0, 0, 0, 0.75);
+
   margin: 0 auto;
   padding: 30px;
 `;
@@ -35,14 +39,14 @@ const LanguageContainer = styled.div`
   border: 1px solid #333;
   border-radius: 5px;
   width: fit-content;
-  padding: .8rem .45rem;
+  padding: 0.8rem 0.45rem;
 `;
 const LanguageSelect = styled.select`
   margin-left: 14px;
   background-color: #000;
   outline: none;
   color: #757575;
-  border: none; 
+  border: none;
 `;
 const DATA = [
   "Preguntas Frecuentes",
@@ -54,21 +58,23 @@ const DATA = [
 ];
 function Footer() {
   return (
-    <Container>
-      <Tittle>¿Preguntas? Llamá al 800-345-1375</Tittle>
-      <LinkContainer>
-        {React.Children.toArray(
-          DATA.map((dato) => <LinkItem>{dato}</LinkItem>)
-        )}
-      </LinkContainer>
-      <LanguageContainer>
-        <GiEarthAmerica />
-        <LanguageSelect name="select">
-          <option value="español">Español</option>
-          <option value="ingles">Ingles</option>
-        </LanguageSelect>
-      </LanguageContainer>
-    </Container>
+    <Wrapper>
+      <Container>
+        <Tittle>¿Preguntas? Llamá al 800-345-1375</Tittle>
+        <LinkContainer>
+          {React.Children.toArray(
+            DATA.map((dato) => <LinkItem>{dato}</LinkItem>)
+          )}
+        </LinkContainer>
+        <LanguageContainer>
+          <GiEarthAmerica />
+          <LanguageSelect name="select">
+            <option value="español">Español</option>
+            <option value="ingles">Ingles</option>
+          </LanguageSelect>
+        </LanguageContainer>
+      </Container>
+    </Wrapper>
   );
 }
 
