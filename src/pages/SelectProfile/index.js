@@ -10,9 +10,10 @@ const Container = styled.div`
   }
 `;
 
-function SelectProfilePage() {
+function SelectProfilePage(props) {
   return <Container>
       <h1>Seleccina tu Perfil</h1>
+      <button onClick={()=> props.history.push('/browse')}>Ir al Perfil</button>
   </Container>;
 }
 

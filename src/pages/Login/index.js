@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { Footer, Header } from "../../components";
+import { AuthContext } from "../../provider/AuthProvider";
 
+//Styled Components
 const Container = styled.div`
   width: 100vw;
   height: fit-content;
@@ -96,6 +98,7 @@ const OptionLink = styled(OptionCheck)`
   }
 `;
 function LoginPage(props) {
+  const authContext = useContext(AuthContext);
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -111,23 +114,31 @@ function LoginPage(props) {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(user);
-    if(email.trim() === ''){
+
+    // console.log(user);
+    if (email.trim() === "") {
       setErrorEmail(true);
-    }   
-    if(password.trim() === ''){
+    }
+    if (password.trim() === "") {
       setErrorPassw(true);
     }
-    props.history.push("/Select-Profile");
+    if (email !== "" && password !== "") {
+      authContext.login({
+        email,
+        password,
+        callback : () => props.history.push("/"),
+      });
+    }
   };
-  useEffect(()=>{
-    if(email !== '' && errorEmail === true){
+
+  useEffect(() => {
+    if (email !== "" && errorEmail === true) {
       setErrorEmail(false);
     }
-    if(password !== '' && errorPassw === true){
+    if (password !== "" && errorPassw === true) {
       setErrorPassw(false);
     }
-  },[email, password]);
+  }, [email, password]);
 
   return (
     <Container>

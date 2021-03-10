@@ -1,17 +1,30 @@
-import React from 'react';
-import { LandingPage, LoginPage, SelectProfilePage } from '../pages';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React, { useContext } from "react";
+import { HomePage, LandingPage, LoginPage, SelectProfilePage } from "../pages";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
 
 function Routes() {
-    return (
+  const authContext = useContext(AuthContext);
+  const { user } = authContext;
+  // console.log("Usuario: ", authContext);
+  return (
     <Router>
       <Switch>
-        <Route exact path="/" component={LandingPage} />
-        <Route exact path="/Login" component={LoginPage} />
-        <Route exact path="/Select-Profile" component={SelectProfilePage} />
+        {!user && (
+          <>
+            <Route exact path="/" component={LandingPage} />
+            <Route exact path="/Login" component={LoginPage} />
+          </>
+        )}
+        {!!user && (
+          <>
+            <Route exact path="/" component={SelectProfilePage} />
+            <Route exact path="/browse" component={HomePage} />
+          </>
+        )}
       </Switch>
     </Router>
-    )
+  );
 }
 
-export default Routes
+export default Routes;
