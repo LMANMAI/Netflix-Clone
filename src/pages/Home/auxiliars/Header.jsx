@@ -12,7 +12,6 @@ const HeaderContainer = styled.div`
   align-items: center;
   padding: 16px 55px;
 `;
-
 const ArrowWrapper = styled.div`
   display: flex;
   align-items: center;
