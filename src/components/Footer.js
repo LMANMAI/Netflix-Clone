@@ -74,6 +74,7 @@ function Footer() {
           </LanguageSelect>
         </LanguageContainer>
       </Container>
+      <p>Made with{"</>"} by Lucas Maidana</p>
     </Wrapper>
   );
 }

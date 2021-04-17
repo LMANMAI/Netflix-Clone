@@ -1,17 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 import Header from "./auxiliars/Header";
+import Row from "./auxiliars/Row";
 import { FiInfo } from "react-icons/fi";
 import { GrPlayFill } from "react-icons/gr";
-
+import requests from "../../config/requests";
 const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
 `;
 const Hero = styled.div`
-  position: absolute;
+  /* position: absolute;
   z-index: -1;
-  top: 0;
+  top: 0; */
   height: 56.25vw;
   width: 100%;
 `;
@@ -26,7 +28,6 @@ const FillContain = styled.div`
   padding-top: 20%;
   width: 95%;
   margin: 0 auto;
-
 `;
 const Logo = styled.img``;
 const Bold = styled.p``;
@@ -56,6 +57,16 @@ const InfoButton = styled(Button)`
   color: white;
 `;
 function HomePage() {
+  const {
+    fetchNetflixOriginals,
+    fetchTrending,
+    fetchTopRated,
+    fetchActionMovies,
+    fetchComedyMovies,
+    fetchHorrorMovies,
+    fetchRomanceMovies,
+    fetchDocumentaries,
+  } = requests;
   return (
     <Container>
       <Header />
@@ -84,6 +95,15 @@ function HomePage() {
           </ButtonContainer>
         </FillContain>
       </Hero>
+
+      <Row tittle="NETFLIX ORIGINALS" url={fetchNetflixOriginals} />
+      <Row tittle="Trending now" url={fetchTrending} />
+      <Row tittle="Top Rated" url={fetchTopRated} />
+      <Row tittle="Action Movies" url={fetchActionMovies} />
+      <Row tittle="Comedy Movies" url={fetchComedyMovies} />
+      <Row tittle="Horror Movies" url={fetchHorrorMovies} />
+      <Row tittle="Romance Movies" url={fetchRomanceMovies} />
+      <Row tittle="Documentaries" url={fetchDocumentaries} />
     </Container>
   );
 }

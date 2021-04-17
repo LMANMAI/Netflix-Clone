@@ -1,25 +1,28 @@
-@font-face{
-    font-family: 'Netflix Sans';
-    font-weight: 300;
-    src: local('NetflixSansLigth'),
-    url(../fonts/NetflixSansLight.otf) format('truetype');
+@font-face {
+  font-family: "Netflix Sans";
+  font-weight: 300;
+  src: local("NetflixSansLigth"),
+    url(../fonts/NetflixSansLight.otf) format("truetype");
 }
-@font-face{
-    font-family: 'Netflix Sans';
-    font-weight: 400;
-    src: local('NetflixSansRegular'),
-    url(../fonts/NetflixSansMedium.otf) format('truetype');
+@font-face {
+  font-family: "Netflix Sans";
+  font-weight: 400;
+  src: local("NetflixSansRegular"),
+    url(../fonts/NetflixSansMedium.otf) format("truetype");
 }
-@font-face{
-    font-family: 'Netflix Sans';
-    font-weight: 700;
-    src: local('NetflixSansBold'),
-    url(../fonts/NetflixSansBold.otf) format('truetype');
+@font-face {
+  font-family: "Netflix Sans";
+  font-weight: 700;
+  src: local("NetflixSansBold"),
+    url(../fonts/NetflixSansBold.otf) format("truetype");
 }
-*{
-    font-family: 'Netflix Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
-    box-sizing: border-box;
+* {
+  font-family: "Netflix Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
 }
-a{
-    text-decoration: none;
+a {
+  text-decoration: none;
+}
+body {
+  background-color: #000;
 }
