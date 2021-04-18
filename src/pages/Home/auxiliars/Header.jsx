@@ -47,18 +47,20 @@ const AvatarContainer = styled.div`
 const RightWrapper = styled(ArrowWrapper)`
   width: 13%;
   justify-content: space-between;
-  svg, p{
-      cursor: pointer;
+  svg,
+  p {
+    cursor: pointer;
   }
-  p{
-      font-size: 12px;
+  p {
+    font-size: 12px;
   }
 `;
 const DATA = [
   "Inicio",
   "Series",
   "Peliculas",
-  "Novedades Populares",
+  "Novedades",
+  " Populares",
   "Mi Lista",
 ];
 
