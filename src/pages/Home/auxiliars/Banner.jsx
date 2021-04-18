@@ -5,22 +5,49 @@ import { GrPlayFill } from "react-icons/gr";
 import axios from "../../../config/axios";
 import requests from "../../../config/requests";
 
-const Hero = styled.div`
-  /* position: absolute;
-  z-index: -1;
-  top: 0; */
-  //max-height: 56.25vw;
+const BannerHeader = styled.header`
+  background-size: cover;
+  background-position: center center;
+  background-image: ${(props) => props.Image};
   min-height: 75vh;
   width: 100vw;
+  position: relative;
+  object-fit: contain;
+  color: white;
+  //padding: 0.8rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-bottom: 0.5rem;
 `;
-
-const FillContain = styled.div`
-  padding-top: 20%;
-  width: 95%;
+const Hero = styled.div`
+  width: 98%;
   margin: 0 auto;
+
+  height: fit-content;
+  @media (min-width: 768px) {
+    margin: initial;
+    margin-left: 25px;
+    //height: 190px;
+  }
+`;
+const Tittle = styled.h1`
+  font-size: 3rem;
+  padding-bottom: 0.3rem;
 `;
 const Bold = styled.p``;
-const Desc = styled.p``;
+const Desc = styled.div`
+  line-height: 1.3;
+  padding-top: 1rem;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  font-size: 0.8rem;
+  width: 360px;
+  height: 80px;
+  @media (min-width: 768px) {
+    width: 45rem;
+  }
+`;
 const ButtonContainer = styled.div`
   display: flex;
   width: fit-content;
@@ -40,17 +67,27 @@ const Button = styled.div`
 const PlayButton = styled(Button)`
   background-color: #fff;
   margin-left: 1.5vw;
+  color: #000;
 `;
 const InfoButton = styled(Button)`
   background-color: rgb(223 223 223 / 34%);
   color: white;
+`;
+const Fade = styled.div`
+  height: 7.4rem;
+  background-image: linear-gradient(
+    180deg,
+    transparent,
+    rgba(37, 37, 37, 0.61),
+    #111
+  );
 `;
 const Banner = () => {
   const [movie, setMovie] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get(requests.fetchNetflixOriginals);
+      const request = await axios.get(requests.fetchTrending);
       setMovie(
         request.data.results[
           Math.floor(Math.random() * request.data.results.length - 1)
@@ -61,15 +98,14 @@ const Banner = () => {
   }, []);
   console.log(movie);
   return (
-    <Hero>
-      <FillContain>
+    <BannerHeader
+      Image={`url(https://image.tmdb.org/t/p/original/${movie?.backdrop_path})`}
+    >
+      <Hero>
+        <Tittle>{movie?.name || movie?.original_name || movie?.title}</Tittle>
         <Bold>Ve la temporada 1</Bold>
-        <Desc>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam quos
-          vero, ea nisi blanditiis asperiores dolore nobis quibusdam mollitia
-          consequuntur optio illum odit voluptas fuga amet ex sed veniam
-          praesentium?
-        </Desc>
+        <Desc>{movie?.overview}</Desc>
+
         <ButtonContainer>
           <PlayButton>
             <GrPlayFill />
@@ -80,8 +116,9 @@ const Banner = () => {
             Más Información
           </InfoButton>
         </ButtonContainer>
-      </FillContain>
-    </Hero>
+      </Hero>
+      <Fade />
+    </BannerHeader>
   );
 };
 

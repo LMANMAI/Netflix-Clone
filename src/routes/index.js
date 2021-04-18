@@ -14,14 +14,16 @@ function Routes() {
           <>
             <Route exact path="/" component={LandingPage} />
             <Route exact path="/Login" component={LoginPage} />
+            {/* el componente del home tengo que sacarlo de aca lo comento para poder hacer la home*/}
+            <Route exact path="/browse" component={HomePage} />
           </>
         )}
-        {!!user && (
+        {/* {!!user && (
           <>
             <Route exact path="/" component={SelectProfilePage} />
             <Route exact path="/browse" component={HomePage} />
           </>
-        )}
+        )} */}
       </Switch>
     </Router>
   );

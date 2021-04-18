@@ -31,10 +31,15 @@ function HomePage() {
         url={fetchNetflixOriginals}
         largeRow={true}
       />
-      <Row tittle="Trending now" url={fetchTrending} />
+      <Row tittle="Top Rated" url={fetchTopRated} />
       <Row tittle="Comedy Movies " url={fetchComedyMovies} />
       <Row tittle="Action Movies" url={fetchActionMovies} />
-      <Row tittle="Top Rated" url={fetchTopRated} largeRow={true} />
+      <Row
+        tittle="Trending now"
+        url={fetchTrending}
+        largeRow={true}
+        topten={true}
+      />
       <Row tittle="Horror Movies" url={fetchHorrorMovies} />
       <Row tittle="Romance Movies" url={fetchRomanceMovies} />
       <Row tittle="Documentaries" url={fetchDocumentaries} />

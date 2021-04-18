@@ -11,6 +11,7 @@ const HeaderContainer = styled.div`
   height: fit-content;
   align-items: center;
   padding: 16px 55px;
+  background-color: #111;
 `;
 const ArrowWrapper = styled.div`
   display: flex;
@@ -22,6 +23,12 @@ const Logo = styled.img`
   height: 40px;
   margin-right: 20px;
   object-fit: cover;
+`;
+const Menu = styled.div`
+  display: none;
+  @media (min-width: 768px) {
+    display: flex;
+  }
 `;
 const Link = styled.p`
   font-weight: ${(props) => (props.selected === true ? "700" : "300")};
@@ -45,7 +52,7 @@ const AvatarContainer = styled.div`
   }
 `;
 const RightWrapper = styled(ArrowWrapper)`
-  width: 13%;
+  width: 40%;
   justify-content: space-between;
   svg,
   p {
@@ -54,13 +61,16 @@ const RightWrapper = styled(ArrowWrapper)`
   p {
     font-size: 12px;
   }
+  @media (min-width: 768px) {
+    width: 13%;
+  }
 `;
 const DATA = [
   "Inicio",
   "Series",
   "Peliculas",
   "Novedades",
-  " Populares",
+  "Populares",
   "Mi Lista",
 ];
 
@@ -71,18 +81,22 @@ function Header() {
     <HeaderContainer>
       <ArrowWrapper>
         <Logo alt="background image" src="/images/Netflix_Logo.png" />
-        {React.Children.toArray(
-          DATA.map((link, index) => <Link selected={index === 0}>{link}</Link>)
-        )}
+        <Menu>
+          {React.Children.toArray(
+            DATA.map((link, index) => (
+              <Link selected={index === 0}>{link}</Link>
+            ))
+          )}
+        </Menu>
       </ArrowWrapper>
 
       <RightWrapper>
         <BsSearch />
-        <p>{user.username}</p>
+        {/* <p>{user.username}</p> */}
         <BsFillGiftFill />
         <BsFillBellFill />
         <AvatarContainer>
-          <img src={user.avatarUrl} alt={user.username} />
+          {/* <img src={user.avatarUrl} alt={user.username} /> */}
           <GoTriangleDown />
         </AvatarContainer>
       </RightWrapper>
