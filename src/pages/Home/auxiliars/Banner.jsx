@@ -78,8 +78,8 @@ const Fade = styled.div`
   background-image: linear-gradient(
     180deg,
     transparent,
-    rgba(37, 37, 37, 0.61),
-    #111
+    rgba(0, 0, 0, 0.61),
+    #000
   );
 `;
 const Banner = () => {

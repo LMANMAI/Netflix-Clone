@@ -11,7 +11,7 @@ const HeaderContainer = styled.div`
   height: fit-content;
   align-items: center;
   padding: 16px 55px;
-  background-color: #111;
+  background-color: #000;
 `;
 const ArrowWrapper = styled.div`
   display: flex;

@@ -51,6 +51,7 @@ const Row = ({ tittle, url, largeRow, topten }) => {
     }
     fetchData();
   }, [url]);
+  
 const opts = {
   height: "300",
   width: "100%",

@@ -1,6 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { Footer, Header } from "../../components";
+import { auth } from "../../firebase";
 import { AuthContext } from "../../provider/AuthProvider";
 
 //Styled Components
@@ -24,7 +25,8 @@ const Formulario = styled.form`
   margin-bottom: 90px;
   display: flex;
   flex-direction: column;
-  min-height: 660px;
+  //min-height: 660px;
+  height: fit-content;
   max-width: 450px;
   border-radius: 4px;
 `;
@@ -97,6 +99,9 @@ const OptionLink = styled(OptionCheck)`
     text-decoration: underline;
   }
 `;
+const Bold = styled.p`
+  font-weight: bold;
+`;
 function LoginPage(props) {
   const authContext = useContext(AuthContext);
   const [user, setUser] = useState({
@@ -131,6 +136,29 @@ function LoginPage(props) {
     }
   };
 
+
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
+  const Register = e => {
+    e.preventDefault();
+    auth.createUserWithEmailAndPassword(
+      emailRef.current.value,
+      passwordRef.current.value
+    ).then((authUser)=>{
+      console.log(authUser)
+    }).catch(error => alert(error.message))
+  }
+  const SignIn = (e) =>{
+    e.preventDefault();
+
+    auth.signInWithEmailAndPassword(
+      emailRef.current.value,
+      passwordRef.current.value
+    ).then((authUser)=>{
+      console.log(authUser)
+    }).catch(error => alert(error.message))
+  }
+
   useEffect(() => {
     if (email !== "" && errorEmail === true) {
       setErrorEmail(false);
@@ -150,6 +178,7 @@ function LoginPage(props) {
           hasmargin={true}
           error={errorEmail}
           type="email"
+          ref={emailRef}
           placeholder="Email o numero de telefono"
           name="email"
           value={email}
@@ -162,6 +191,7 @@ function LoginPage(props) {
           hasmargin={true}
           error={errorPassw}
           type="password"
+          ref={passwordRef}
           placeholder="Contraseña"
           name="password"
           value={password}
@@ -172,7 +202,7 @@ function LoginPage(props) {
             la contraseña debe tener entre 4 y 60 caracteres
           </ErrorMessage>
         )}
-        <Button type="submit" value="Iniciar sesion" />
+        <Button type="submit" value="Iniciar sesion" onClick={ SignIn }/>
         <LoginOptions>
           <Check>
             <input type="checkbox" name="Recuerdame" />
@@ -180,6 +210,7 @@ function LoginPage(props) {
           </Check>
           <OptionLink>¿Necesitas ayuda?</OptionLink>
         </LoginOptions>
+        <OptionLink>¿Nuevo en Netflix? <Bold  onClick={ Register }>Registrate ahora</Bold></OptionLink>
       </Formulario>
       <Footer />
     </Container>
