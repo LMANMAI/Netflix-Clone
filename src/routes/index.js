@@ -1,39 +1,42 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { HomePage, LandingPage, LoginPage, SelectProfilePage } from "../pages";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { AuthContext } from "../provider/AuthProvider";
 import { auth } from "../firebase";
+import { useDispatch, useSelector } from 'react-redux';
+import { login ,logout, selectUser } from '../features/userSlice';
 
 function Routes() {
-  const authContext = useContext(AuthContext);
-  //const { user } = authContext;
-  // console.log("Usuario: ", authContext);
-  const user = null;
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch()
   useEffect(()=>{
     const unsubscribe = auth.onAuthStateChanged(userAuth =>{
       if(userAuth){
         //log in
+        dispatch(login({
+          uid: userAuth.uid,
+          email: userAuth.email,
+        }));
         console.log(userAuth)
       }else{
         //loged out 
+        dispatch(logout());
       }
     });
 
     return unsubscribe;
-  }, []);
+  }, [dispatch]);
 
   return (
-    <Router>
+    <Router>  
+       {/* //<Route exact path="/" component={l} />     */}
+      {!user ? ( <LandingPage/>
+       )
+       :( 
       <Switch>
-        {!user ? (
-          <>
-            <Route exact path="/" component={LandingPage} />
-            <Route exact path="/Login" component={LoginPage} />           
-            </>
-        )
-        :(  <Route exact path="/browse" component={HomePage} /> )
-      }
+          <Route exact path="/" component={HomePage} /> 
       </Switch>
+      )
+      }    
     </Router>
   );
 }

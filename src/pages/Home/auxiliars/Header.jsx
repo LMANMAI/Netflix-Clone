@@ -3,6 +3,9 @@ import styled from "styled-components";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { BsSearch, BsFillBellFill, BsFillGiftFill } from "react-icons/bs";
 import { GoTriangleDown } from "react-icons/go";
+import { auth } from "../../../firebase";
+
+
 const HeaderContainer = styled.div`
   z-index: 1;
   width: 100%;
@@ -97,7 +100,9 @@ function Header() {
         <BsFillBellFill />
         <AvatarContainer>
           {/* <img src={user.avatarUrl} alt={user.username} /> */}
+          <button onClick={()=> auth.signOut()}>
           <GoTriangleDown />
+          </button>          
         </AvatarContainer>
       </RightWrapper>
     </HeaderContainer>

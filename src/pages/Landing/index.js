@@ -6,6 +6,7 @@ import LandingSection from './auxiliars/Section';
 import FAQ from './auxiliars/FAQ';
 import { Footer } from '../../components';
 
+
 function LandingPage() {
     return (
         <div className="LandingPage">
