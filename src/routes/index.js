@@ -29,7 +29,7 @@ function Routes() {
   return (
     <Router>  
        {/* //<Route exact path="/" component={l} />     */}
-      {!user ? ( <LandingPage/>
+      {!user ? ( <LoginPage/>
        )
        :( 
       <Switch>
