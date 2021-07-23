@@ -5,7 +5,6 @@ import { BsSearch, BsFillBellFill, BsFillGiftFill } from "react-icons/bs";
 import { GoTriangleDown } from "react-icons/go";
 import { auth } from "../../../firebase";
 
-
 const HeaderContainer = styled.div`
   z-index: 1;
   width: 100%;
@@ -14,7 +13,10 @@ const HeaderContainer = styled.div`
   height: fit-content;
   align-items: center;
   padding: 16px 55px;
-  background-color: #000;
+  background-color: transparent;
+  position: absolute;
+  z-index: 3;
+  margin-bottom: 3rem;
 `;
 const ArrowWrapper = styled.div`
   display: flex;
@@ -100,9 +102,9 @@ function Header() {
         <BsFillBellFill />
         <AvatarContainer>
           {/* <img src={user.avatarUrl} alt={user.username} /> */}
-          <button onClick={()=> auth.signOut()}>
-          <GoTriangleDown />
-          </button>          
+          <button onClick={() => auth.signOut()}>
+            <GoTriangleDown />
+          </button>
         </AvatarContainer>
       </RightWrapper>
     </HeaderContainer>

@@ -43,7 +43,7 @@ const LanguageContainer = styled.div`
 `;
 const LanguageSelect = styled.select`
   margin-left: 14px;
-  background-color: #000;
+  background-color: #141414;
   outline: none;
   color: #757575;
   border: none;

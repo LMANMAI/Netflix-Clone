@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Header from "./auxiliars/Header";
 import Row from "./auxiliars/Row";
 import Banner from "./auxiliars/Banner";
-import Footer from '../../components/Footer';
+import Footer from "../../components/Footer";
 import requests from "../../config/requests";
 const Container = styled.div`
   width: 100%;

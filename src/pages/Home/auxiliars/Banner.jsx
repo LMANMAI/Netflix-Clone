@@ -7,14 +7,14 @@ import requests from "../../../config/requests";
 
 const BannerHeader = styled.header`
   background-size: cover;
-  background-position: center center;
+  background-position: top center;
+  background-repeat: no-repeat;
   background-image: ${(props) => props.Image};
-  min-height: 75vh;
+  height: 95vh;
   width: 100vw;
   position: relative;
-  object-fit: contain;
+  object-fit: cover;
   color: white;
-  //padding: 0.8rem 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -67,7 +67,7 @@ const Button = styled.div`
 const PlayButton = styled(Button)`
   background-color: #fff;
   margin-left: 1.5vw;
-  color: #000;
+  color: #141414;
 `;
 const InfoButton = styled(Button)`
   background-color: rgb(223 223 223 / 34%);
@@ -79,8 +79,10 @@ const Fade = styled.div`
     180deg,
     transparent,
     rgba(0, 0, 0, 0.61),
-    #000
+    #141414
   );
+  position: relative;
+  width: 100vw;
 `;
 const Banner = () => {
   const [movie, setMovie] = useState([]);
