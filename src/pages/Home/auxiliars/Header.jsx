@@ -1,75 +1,17 @@
 import React, { useContext } from "react";
-import styled from "styled-components";
 import { AuthContext } from "../../../provider/AuthProvider";
 import { BsSearch, BsFillBellFill, BsFillGiftFill } from "react-icons/bs";
 import { GoTriangleDown } from "react-icons/go";
 import { auth } from "../../../firebase";
-
-const HeaderContainer = styled.div`
-  z-index: 1;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  height: fit-content;
-  align-items: center;
-  padding: 16px 55px;
-  background-color: transparent;
-  position: absolute;
-  z-index: 3;
-  margin-bottom: 3rem;
-`;
-const ArrowWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  color: white;
-`;
-const Logo = styled.img`
-  width: 120px;
-  height: 40px;
-  margin-right: 20px;
-  object-fit: cover;
-`;
-const Menu = styled.div`
-  display: none;
-  @media (min-width: 768px) {
-    display: flex;
-  }
-`;
-const Link = styled.p`
-  font-weight: ${(props) => (props.selected === true ? "700" : "300")};
-  transition: color 300ms;
-  cursor: pointer;
-  font-size: 15px;
-  padding: 0 10px;
-  &:hover {
-    color: gray;
-  }
-`;
-const AvatarContainer = styled.div`
-  display: flex;
-  align-items: center;
-  img {
-    width: 32px;
-    height: 32px;
-    border-radius: 4px;
-    object-fit: cover;
-    margin-right: 8px;
-  }
-`;
-const RightWrapper = styled(ArrowWrapper)`
-  width: 40%;
-  justify-content: space-between;
-  svg,
-  p {
-    cursor: pointer;
-  }
-  p {
-    font-size: 12px;
-  }
-  @media (min-width: 768px) {
-    width: 13%;
-  }
-`;
+import {
+  HeaderContainer,
+  ArrowWrapper,
+  Logo,
+  Menu,
+  Link,
+  AvatarContainer,
+  RightWrapper,
+} from "./styles";
 const DATA = [
   "Inicio",
   "Series",

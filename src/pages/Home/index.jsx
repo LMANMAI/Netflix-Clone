@@ -28,7 +28,7 @@ function HomePage() {
       <Header />
       <Banner />
       <Row
-        tittle="NETFLIX ORIGINALS"
+        tittle="Netflix Originals"
         url={fetchNetflixOriginals}
         largeRow={true}
       />

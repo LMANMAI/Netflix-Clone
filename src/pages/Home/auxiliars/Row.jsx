@@ -1,57 +1,22 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../../config/axios";
-import styled from "styled-components";
+import {
+  RowMain,
+  RowTittle,
+  RowContainer,
+  RowWrapper,
+  RowImage,
+} from "./styles";
 import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
-const RowMain = styled.div`
-  //min-width: 100vw;
-  width: fit-content;
-  height: fit-content;
-  margin: 50px auto;
-  padding-left: 3rem;
-`;
-const RowTittle = styled.h3`
-  color: #e5e5e5;
-  margin: 5px;
-  text-transform: capitalize;
-  line-height: 1.25vw;
-  font-size: 1.4vw;
-`;
-const RowContainer = styled.div`
-  display: flex;
-  /* overflow-x: scroll;
-  overflow-y: hidden; */
-  padding: 5px;
-  transition: 450ms;
-  height: ${(props) => (props.largeRow ? "400px" : "30vh")};
-  /* margin: 1rem 0; */
-  border: ${(props) => props.topten && "1px solid red"};
-  &::-webkit-scrollbar {
-    display: none;
-  }
-`;
-const RowWrapper = styled.div`
-  width: ${(props) => (props.largeRow ? "170px" : "250px")};
-  margin: 0 2px;
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper.min.css";
+import "swiper/components/pagination/pagination.min.css";
+import "swiper/components/navigation/navigation.min.css";
 
-  @media (min-width: 768px) {
-    width: ${(props) => (props.largeRow ? "15vw" : "250px")};
-  }
-`;
-const RowImage = styled.img`
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  margin-right: 10px;
-  transition: transform 450ms;
-  cursor: pointer;
-  &:hover {
-    transform: scale(1.07);
-  }
-  &:first-child {
-    /* margin-left: 25px; */
-  }
-`;
+import SwiperCore, { Pagination, Navigation } from "swiper/core";
+
+SwiperCore.use([Pagination, Navigation]);
 const baseUrl = "https://image.tmdb.org/t/p/original/";
 
 const Row = ({ tittle, url, largeRow, topten }) => {
@@ -87,12 +52,19 @@ const Row = ({ tittle, url, largeRow, topten }) => {
     console.log(movie);
   };
   return (
-    <RowMain>
+    <Swiper
+      spaceBetween={5}
+      slidesPerView={7}
+      onSlideChange={() => console.log("slide change")}
+      onSwiper={(swiper) => console.log(swiper)}
+      navigation={true}
+      className="mySwiper"
+    >
       <RowTittle>{tittle}</RowTittle>
       <RowContainer largeRow={largeRow}>
         {React.Children.toArray(
           movies.map((movie) => (
-            <RowWrapper largeRow={largeRow}>
+            <SwiperSlide>
               <RowImage
                 onClick={() => handleClick(movie)}
                 src={`${baseUrl}${
@@ -102,12 +74,15 @@ const Row = ({ tittle, url, largeRow, topten }) => {
                 }`}
                 alt={movie.name}
               />
-            </RowWrapper>
+            </SwiperSlide>
+            // <RowWrapper largeRow={largeRow}>
+            //
+            // </RowWrapper>
           ))
         )}
       </RowContainer>
       {trailerurl && <YouTube videoId={trailerurl} opts={opts} />}
-    </RowMain>
+    </Swiper>
   );
 };
 
