@@ -54,7 +54,7 @@ const Row = ({ tittle, url, largeRow, topten }) => {
   return (
     <Swiper
       spaceBetween={5}
-      slidesPerView={7}
+      slidesPerView={8}
       onSlideChange={() => console.log("slide change")}
       onSwiper={(swiper) => console.log(swiper)}
       navigation={true}
