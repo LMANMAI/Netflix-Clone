@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100vw;
-  height: fit-content;
+  width: 100%;
   position: relative;
+  overflow: hidden;
 `;
 export const Background = styled.img`
   position: absolute;
@@ -18,6 +18,7 @@ export const Formulario = styled.form`
   padding: 60px 68px 40px;
   margin: 0 auto;
   margin-bottom: 90px;
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
   //min-height: 660px;

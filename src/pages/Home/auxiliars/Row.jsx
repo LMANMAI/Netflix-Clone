@@ -13,6 +13,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.min.css";
 import "swiper/components/pagination/pagination.min.css";
 import "swiper/components/navigation/navigation.min.css";
+import "./styles/index.css";
 
 import SwiperCore, { Pagination, Navigation } from "swiper/core";
 
@@ -52,37 +53,35 @@ const Row = ({ tittle, url, largeRow, topten }) => {
     console.log(movie);
   };
   return (
-    <Swiper
-      spaceBetween={5}
-      slidesPerView={8}
-      onSlideChange={() => console.log("slide change")}
-      onSwiper={(swiper) => console.log(swiper)}
-      navigation={true}
-      className="mySwiper"
-    >
+    <>
       <RowTittle>{tittle}</RowTittle>
-      <RowContainer largeRow={largeRow}>
-        {React.Children.toArray(
-          movies.map((movie) => (
-            <SwiperSlide>
-              <RowImage
-                onClick={() => handleClick(movie)}
-                src={`${baseUrl}${
-                  largeRow
-                    ? movie?.poster_path
-                    : movie?.backdrop_path || movie?.poster_path
-                }`}
-                alt={movie.name}
-              />
-            </SwiperSlide>
-            // <RowWrapper largeRow={largeRow}>
-            //
-            // </RowWrapper>
-          ))
-        )}
-      </RowContainer>
-      {trailerurl && <YouTube videoId={trailerurl} opts={opts} />}
-    </Swiper>
+      <Swiper
+        spaceBetween={5}
+        //slidesPerView={8}
+        navigation={true}
+        className="mySwiper swiper_container"
+      >
+        <RowContainer largeRow={largeRow}>
+          {React.Children.toArray(
+            movies.map((movie) => (
+              <SwiperSlide className="poster_container">
+                <RowImage
+                  onClick={() => handleClick(movie)}
+                  src={`${baseUrl}${
+                    largeRow ? movie?.poster_path : movie?.backdrop_path
+                  }`}
+                  alt={movie.name}
+                />
+              </SwiperSlide>
+              // <RowWrapper largeRow={largeRow}>
+              //
+              // </RowWrapper>
+            ))
+          )}
+        </RowContainer>
+        {trailerurl && <YouTube videoId={trailerurl} opts={opts} />}
+      </Swiper>
+    </>
   );
 };
 

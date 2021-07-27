@@ -1,0 +1,19 @@
+.swiper_container.swiper_container {
+  margin: 35px;
+  padding: 1rem;
+  transition: all 350ms ease;
+  height: fit-content !important;
+}
+
+.swiper_container > .swiper-button-prev,
+.swiper_container > .swiper-button-next {
+  display: none;
+  color: white;
+}
+.swiper_container:hover .swiper-button-prev,
+.swiper_container:hover .swiper-button-next {
+  display: initial;
+}
+.poster_container.poster_container {
+  width: 250px !important;
+}

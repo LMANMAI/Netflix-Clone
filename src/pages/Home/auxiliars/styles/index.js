@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 /**BANNER */
 export const BannerHeader = styled.header`
   background-size: cover;
@@ -134,7 +135,8 @@ export const AvatarContainer = styled.div`
 `;
 export const RightWrapper = styled(ArrowWrapper)`
   width: 40%;
-  justify-content: space-between;
+  gap: 10px;
+  justify-content: flex-end;
   svg,
   p {
     cursor: pointer;
@@ -178,7 +180,6 @@ export const RowContainer = styled.div`
 `;
 export const RowWrapper = styled.div`
   width: ${(props) => (props.largeRow ? "170px" : "250px")};
-  margin: 0 2px;
 
   @media (min-width: 768px) {
     width: ${(props) => (props.largeRow ? "15vw" : "250px")};
@@ -187,7 +188,6 @@ export const RowWrapper = styled.div`
 export const RowImage = styled.img`
   object-fit: cover;
   width: 100%;
-  height: 100%;
   margin-right: 10px;
   transition: transform 450ms;
   cursor: pointer;
@@ -197,4 +197,12 @@ export const RowImage = styled.img`
   &:first-child {
     /* margin-left: 25px; */
   }
+`;
+
+export const MenuToggle = styled.div`
+  background-color: rgba(0, 0, 0, 0.9);
+  position: absolute;
+  top: 50px;
+  right: 25px;
+  padding: 15px;
 `;

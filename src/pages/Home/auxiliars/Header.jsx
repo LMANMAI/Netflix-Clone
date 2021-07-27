@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../../../provider/AuthProvider";
+import React, { useContext, useState } from "react";
 import { BsSearch, BsFillBellFill, BsFillGiftFill } from "react-icons/bs";
 import { GoTriangleDown } from "react-icons/go";
 import { auth } from "../../../firebase";
@@ -11,6 +10,7 @@ import {
   Link,
   AvatarContainer,
   RightWrapper,
+  MenuToggle,
 } from "./styles";
 const DATA = [
   "Inicio",
@@ -22,8 +22,10 @@ const DATA = [
 ];
 
 function Header() {
-  const authContext = useContext(AuthContext);
-  const { user } = authContext;
+  const [toggle, setToggle] = useState(false);
+  const handleToggle = () => {
+    setToggle(!toggle);
+  };
   return (
     <HeaderContainer>
       <ArrowWrapper>
@@ -40,13 +42,18 @@ function Header() {
       <RightWrapper>
         <BsSearch />
         {/* <p>{user.username}</p> */}
-        <BsFillGiftFill />
         <BsFillBellFill />
         <AvatarContainer>
           {/* <img src={user.avatarUrl} alt={user.username} /> */}
-          <button onClick={() => auth.signOut()}>
-            <GoTriangleDown />
-          </button>
+          <GoTriangleDown onMouseEnter={() => handleToggle()} />
+          {toggle && (
+            <MenuToggle onMouseLeave={() => handleToggle(false)}>
+              <p>Administrar Perfiles</p>
+              <hr />
+              <p>Cuenta</p>
+              <p onClick={() => auth.signOut()}>Cerrar Sesion</p>
+            </MenuToggle>
+          )}
         </AvatarContainer>
       </RightWrapper>
     </HeaderContainer>
