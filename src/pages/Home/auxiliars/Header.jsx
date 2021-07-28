@@ -1,7 +1,9 @@
-import React, { useContext, useState } from "react";
-import { BsSearch, BsFillBellFill, BsFillGiftFill } from "react-icons/bs";
+import React, { useState } from "react";
+import { BsSearch, BsFillBellFill } from "react-icons/bs";
 import { GoTriangleDown } from "react-icons/go";
 import { auth } from "../../../firebase";
+import { selectUser } from "../../../features/userSlice";
+import { useSelector } from "react-redux";
 import {
   HeaderContainer,
   ArrowWrapper,
@@ -22,6 +24,7 @@ const DATA = [
 ];
 
 function Header() {
+  const userAuth = useSelector(selectUser);
   const [toggle, setToggle] = useState(false);
   const handleToggle = () => {
     setToggle(!toggle);
@@ -41,17 +44,20 @@ function Header() {
 
       <RightWrapper>
         <BsSearch />
-        {/* <p>{user.username}</p> */}
+        <p>{userAuth.name}</p>
         <BsFillBellFill />
         <AvatarContainer>
-          {/* <img src={user.avatarUrl} alt={user.username} /> */}
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
+            alt="imagen de usuario"
+          />
           <GoTriangleDown onMouseEnter={() => handleToggle()} />
           {toggle && (
             <MenuToggle onMouseLeave={() => handleToggle(false)}>
-              <p>Administrar Perfiles</p>
+              <li>Administrar Perfiles</li>
               <hr />
-              <p>Cuenta</p>
-              <p onClick={() => auth.signOut()}>Cerrar Sesion</p>
+              <li>Cuenta</li>
+              <li onClick={() => auth.signOut()}>Cerrar Sesion</li>
             </MenuToggle>
           )}
         </AvatarContainer>

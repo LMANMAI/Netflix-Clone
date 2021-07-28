@@ -20,7 +20,6 @@ function Routes() {
             photo: userAuth.photoURL,
           })
         );
-        console.log(userAuth);
       } else {
         //loged out
         dispatch(logout());

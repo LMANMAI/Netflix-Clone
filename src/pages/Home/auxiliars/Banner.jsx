@@ -27,7 +27,6 @@ const Banner = () => {
     }
     fetchData();
   }, []);
-  console.log(movie);
   return (
     <BannerHeader
       Image={`url(https://image.tmdb.org/t/p/original/${movie?.backdrop_path})`}

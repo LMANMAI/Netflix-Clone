@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "../../../config/axios";
-import {
-  RowMain,
-  RowTittle,
-  RowContainer,
-  RowWrapper,
-  RowImage,
-} from "./styles";
+import { RowTittle, RowContainer, RowImage } from "./styles";
 import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -50,10 +44,9 @@ const Row = ({ tittle, url, largeRow, topten }) => {
         })
         .catch((error) => console.log(error));
     }
-    console.log(movie);
   };
   return (
-    <>
+    <div>
       <RowTittle>{tittle}</RowTittle>
       <Swiper
         spaceBetween={5}
@@ -71,6 +64,7 @@ const Row = ({ tittle, url, largeRow, topten }) => {
                     largeRow ? movie?.poster_path : movie?.backdrop_path
                   }`}
                   alt={movie.name}
+                  loading="lazy"
                 />
               </SwiperSlide>
               // <RowWrapper largeRow={largeRow}>
@@ -81,7 +75,7 @@ const Row = ({ tittle, url, largeRow, topten }) => {
         </RowContainer>
         {trailerurl && <YouTube videoId={trailerurl} opts={opts} />}
       </Swiper>
-    </>
+    </div>
   );
 };
 

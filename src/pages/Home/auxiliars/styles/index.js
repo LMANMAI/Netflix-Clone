@@ -17,9 +17,10 @@ export const BannerHeader = styled.header`
   margin-bottom: 0.5rem;
 `;
 export const Hero = styled.div`
-  width: 98%;
-  margin: 0 auto;
-
+  width: 100%;
+  //margin: 0 auto;
+  position: absolute;
+  bottom: 120px;
   height: fit-content;
   @media (min-width: 768px) {
     margin: initial;
@@ -47,6 +48,7 @@ export const Desc = styled.div`
 export const ButtonContainer = styled.div`
   display: flex;
   width: fit-content;
+  margin-top: 35px;
 `;
 export const Button = styled.div`
   padding: 0.8rem;
@@ -56,6 +58,8 @@ export const Button = styled.div`
   padding-right: 2.4rem;
   width: fit-content;
   margin: 1.5vw 0.75vw 0.1vw;
+  display: flex;
+  align-items: center;
   svg {
     margin-right: 5px;
   }
@@ -161,8 +165,11 @@ export const RowTittle = styled.h3`
   color: #e5e5e5;
   margin: 5px;
   text-transform: capitalize;
-  line-height: 1.25vw;
-  font-size: 1.4vw;
+  font-size: 1.25rem;
+  @media (min-width: 768px) {
+    line-height: 1.25vw;
+    font-size: 1.4vw;
+  }
 `;
 export const RowContainer = styled.div`
   display: flex;
@@ -202,7 +209,16 @@ export const RowImage = styled.img`
 export const MenuToggle = styled.div`
   background-color: rgba(0, 0, 0, 0.9);
   position: absolute;
-  top: 50px;
-  right: 25px;
+  top: 55px;
+  right: 45px;
   padding: 15px;
+  li {
+    list-style: none;
+    padding: 5px;
+    &:hover {
+      cursor: pointer;
+      background-color: rgba(255, 255, 255, 0.9);
+      color: rgba(0, 0, 0, 0.9);
+    }
+  }
 `;

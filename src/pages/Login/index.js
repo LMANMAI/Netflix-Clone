@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Footer, Header } from "../../components";
 import { auth } from "../../firebase";
 import { useHistory } from "react-router-dom";
@@ -19,16 +19,21 @@ import {
   OptionLink,
   Bold,
 } from "./auxiliars";
-function LoginPage(props) {
+function LoginPage() {
   const [user, setUser] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
+    photo:
+      "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png",
   });
+  /**State para los errores */
   const [errorEmail, setErrorEmail] = useState(false);
   const [errorPassw, setErrorPassw] = useState(false);
+  /**State para cambiar de formulario */
   const [openform, setOpenForm] = useState(false);
-  const { name, email, password } = user;
+  /**destructuring del objeto de usuario */
+  const { username, email, password } = user;
   const history = useHistory();
   const userAuth = useSelector(selectUser);
   const handleShowForm = () => {
@@ -42,23 +47,14 @@ function LoginPage(props) {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // console.log(user);
     if (email.trim() === "") {
       setErrorEmail(true);
     }
     if (password.trim() === "") {
       setErrorPassw(true);
     }
-    // if (email !== "" && password !== "") {
-    //   authContext.login({
-    //     email,
-    //     password,
-    //     callback: () => props.history.push("/"),
-    //   });
-    // }
   };
-
+  const nameRef = useRef(null);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
   const Register = (e) => {
@@ -68,9 +64,7 @@ function LoginPage(props) {
         emailRef.current.value,
         passwordRef.current.value
       )
-      .then((authUser) => {
-        console.log(authUser);
-      })
+      .then((authUser) => {})
       .catch((error) => alert(error.message));
   };
   const SignIn = (e) => {
@@ -81,9 +75,7 @@ function LoginPage(props) {
         emailRef.current.value,
         passwordRef.current.value
       )
-      .then((authUser) => {
-        // history.push("/Home");
-      })
+      .then((authUser) => {})
       .catch((error) => alert(error.message));
   };
 
@@ -97,6 +89,7 @@ function LoginPage(props) {
     if (userAuth) {
       history.push("/");
     }
+    // eslint-disable-next-line
   }, [email, password]);
 
   return (
@@ -152,12 +145,11 @@ function LoginPage(props) {
           <Tittle>Registrate</Tittle>
           <Input
             hasmargin={true}
-            error={errorEmail}
             type="text"
-            ref={emailRef}
+            ref={nameRef}
             placeholder="Nombre"
-            name="nombre"
-            value={name}
+            name="username"
+            value={username}
             onChange={handleChange}
           />
           <Input
